@@ -4,7 +4,12 @@ Goat Lives Matter: a DevOps Training Repository
 
 ## Setting up your build environment
 
-### Step 1: SSH Keys
+
+### Step 1: Create an SSH Key
+Google and find out how by using puttygen https://www.puttygen.com/
+
+### Step 2: edit ssh config
+
 ```
 create a directory .ssh under %USERPROFILE%
 
@@ -23,3 +28,6 @@ Host github.com
  IdentityFile C:\Users\<your-user-name>\.ssh\<name-of-your-private-ssh-key>
 
 ```
+
+### Step 3: Add ssh key to github 
+_coming soon_
