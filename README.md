@@ -40,10 +40,11 @@ Goat Lives Matter: a DevOps Training Repository
 * from the command prompt execute: ```mkdir %USERPROFILE%\.ssh```
 * Open puttygen
 * Click 'generate' and move your mouse until the key is generated
-* Click 'Save Public Key'
+* add 'goatlivesmatter' to the second field, 'Key Comment'
+* In the box where the key is visible, and starting with ssh-rsa, select all and copy 
 	* Save it to: C:\Users\<your-user-name>\.ssh\goatlivesmatter.pub
-* Click 'Save Private Key'
-	* Save it to: C:\Users\<your-user-name>\.ssh\goatlivesmatter
+* From the top menus, select 'Conversion' then 'Export OpenSSH key'
+	* Save it without an extention to: C:\Users\<your-user-name>\.ssh\goatlivesmatter
 
 ### Edit/Create ssh config
 * add the following to an empty file  
@@ -60,30 +61,15 @@ _hint: make sure the file does not have any extension on it, some editors will t
 * On the right, select 'SSH and GPG keys' 
 * On the left, select 'New SSH Key'
 * Go back to Notepad++ and open C:\Users\<your-user-name>\.ssh\goatlivesmatter.pub
-* This gets a little tricky, so you might want to make a backup of your pub key (you can always regenerate it)
 	* it should look like this ... 
 ```
----- BEGIN SSH2 PUBLIC KEY ----
-Comment: "goatlivesmatter-public"
-ZU5xuvjTcwPe0P4Vb1f3pe2eydwAKhoChjz15RjUeSaDsnimJFZPsHQfkMZPn2Zk
-EmI/DrJHbiLV4BR9bN3QlnG1iExlr1YuMHdmEU0MX+HkRgEvoPIKF5wnEr2IqqPy
-tAyP3cq7ThXBEW8Il+UudR0aAcULI0133Fv0oaOYkYcb8ECf7Eza7ea5Gmjffaw1
-2m0thBpdfzRG40+3wnxCC9f/MAwEWZ77NminIpFgj6lcmwJwtOCxpyZWacy39Lwl
-yi7fRxHCm8ilGmIxIlrCGaM62ELVSh+4dNYmoJhG21dphzybtm+CedgftPYjWZ77
-vANLqe56gq83mfkrFjyYDFhwPJ+um0szak5E/p/Q04a2ZwLKqQ==
----- END SSH2 PUBLIC KEY ----	
+ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAsn21hVxsewJ0bXwHLatOqCX/gXJBczz6Hob3W7kbM8YzSm4dQT4RjE9etnYelBGWB3+ZafkkhbE1wjN3ZuXcyZEtbqoIsKw+80mU0XpC9sjSiBYfrmwed4HRbWKSBZBeYmKzvPEA0APeGvSynka1cgWXJ8COmRVYIoU8IieF8+FpWKHoVcpFr4y7YsM7YOnJqE4IQ/fDVUvk/VgFzr0PGeS+ibFONH1DkDAf/xi/JZvRtC4mRk/N87LxCSv+jKv+5uey0MNtrf3hw3k/0GFZJEAOoA+F/I1zPNF1meHFfmat80EdqXcoNl30JxHF2qmOM+MCbD6XWnIoxoNDQyzqWw== rsa-key-20190722
 ```
-	* you move the comment, the part in quotes after the equal sign and putting a space after the ==
-	* remote the comment line, remote both --- lines and make the file a single string so it looks like this
-```
-ZU5xuvjTcwPe0P4Vb1f3pe2eydwAKhoChjz15RjUeSaDsnimJFZPsHQfkMZPn2ZkEmI/DrJHbiLV4BR9bN3QlnG1iExlr1YuMHdmEU0MX+HkRgEvoPIKF5wnEr2IqqPytAyP3cq7ThXBEW8Il+UudR0aAcULI0133Fv0oaOYkYcb8ECf7Eza7ea5Gmjffaw12m0thBpdfzRG40+3wnxCC9f/MAwEWZ77NminIpFgj6lcmwJwtOCxpyZWacy39Lwlyi7fRxHCm8ilGmIxIlrCGaM62ELVSh+4dNYmoJhG21dphzybtm+CedgftPYjWZ77vANLqe56gq83mfkrFjyYDFhwPJ+um0szak5E/p/Q04a2ZwLKqQ== goatlivesmatter-public
-```
-	* select all, copy and save
+* select all, copy
 * Back to Github and adding a new SSH key
 * Title: goatlivesmatter
 * Key: <paste> 
 * Save
-* as noted, this is a little tricky so that might tell you something is wrong, just hack on it until it works (cheesy instructions, but this is one of those things you have do for youself) 
 
 ### Create a test project and test your SSH key
 * go back to github and login
@@ -103,6 +89,13 @@ git push origin master
 * check that the changes completed by refreshing your main repo page
 
 
+### Now we're ready to start slinging code ... 
+
+# Lession 1: Tomcat intalled 
+
+# Lesson 2: Hellow world Web-App
+
+# Lesson 3: <TBD>
 
 
 
