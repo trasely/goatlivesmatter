@@ -91,12 +91,17 @@ git push origin master
 
 ### Now we're ready to start slinging code ... 
 
-# Lession 1:  
-[Installing Tomcat](lesson1/README.md)
 
-# Lesson 2: Hellow world Web-App
+## Lession 1:  
+[Write Lesson 2](lesson1/README.md)
 
-# Lesson 3: <TBD>
+## Lession 2:  
+[Installing Tomcat](lesson2/README.md)
+
+## Lesson 3: 
+[Hello world Web-App](lesson3/README.md)
+
+## Lesson 4: <TBD>
 
 
 
