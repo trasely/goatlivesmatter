@@ -2,6 +2,8 @@
 
 ### Objective: to gain experience in setting up a java environment, Apache Tomcat, working with git and AWS
 
+Edit lesson2 README.md to post your documentation
+
 * Using AWS
 	* create a windows instance
 	* grant full access to all ports (TCP/UTC) for your IP
