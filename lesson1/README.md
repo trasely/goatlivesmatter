@@ -16,4 +16,3 @@ Edit lesson2 README.md to post your documentation
 * Document how to test a running instance of Apache Tomcat (on port 8080)
  
 
-test branch pushing rules ... 'develop' & 'master' 
