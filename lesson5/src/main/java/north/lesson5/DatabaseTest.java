@@ -40,7 +40,7 @@ public class DatabaseTest
  	public void closeConnection(){
  		System.out.println("closeConnection");
  		try{
- 			conn.close();
+ 			//conn.close();
  		}catch(Exception ex){
  			ex.printStackTrace();
  		}
@@ -49,9 +49,11 @@ public class DatabaseTest
  	public void login() throws Exception{
  		System.out.println("login");
  		Statement stmt=conn.createStatement();  
-		ResultSet rs=stmt.executeQuery("select * from login");  
+		//ResultSet rs=stmt.executeQuery("select * from login");
+		ResultSet rs=stmt.executeQuery("select userid from login where username = 'terry' and password = 'thecow'");
 		while(rs.next())  
-		System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
+		//System.out.println(rs.getString("Username")+"  "+rs.getString("Password"));  
+		System.out.println("UserID; " + rs.getInt("UserID"));
  	}
 	
 
