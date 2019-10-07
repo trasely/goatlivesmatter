@@ -1,9 +1,8 @@
 # LESSON 6
 Md5 Password/MySQL
 
-* merge lesson5 to develop
-* merge develop to master
-* checkout lesson6 and start there ...
+* Merge Lesson5 to develop
+* Merge Lesson5 to master
 
 
 * insert record into users table with username,password (auto-incriment userid)
@@ -11,4 +10,8 @@ Md5 Password/MySQL
 
 * to run the javadoc command use ```javadoc:javadoc```
 
+<<<<<<< HEAD
 Then open the file target\site\apidocs\index.html
+=======
+howdy
+>>>>>>> 460b25a4c4cad99f8b3b99dd7c4b5d1e22b2d77e
