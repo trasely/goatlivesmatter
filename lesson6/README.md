@@ -9,4 +9,5 @@ Md5 Password/MySQL
 * select userid from record using ascii username,password but serverside encrypt (md5) password
 
 
-howdy
+to run maven javadoc use this command: ```javadoc:javadoc```  
+then open the file target\site\apidocs\index.html
