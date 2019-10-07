@@ -1,8 +1,9 @@
 # LESSON 6
 Md5 Password/MySQL
 
-* Merge Lesson5 to develop
-* Merge Lesson5 to master
+* merge lesson5 to develop
+* merge develop to master
+* checkout lesson6 and start there ...
 
 
 * insert record into users table with username,password (auto-incriment userid)
