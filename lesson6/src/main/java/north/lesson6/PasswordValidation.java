@@ -9,7 +9,9 @@ public class PasswordValidation {
 
 	private Connection conn = null;
 	
-	public PasswordValidation() {
+	public PasswordValidation() { }
+	
+	private PasswordValidation(boolean islocal) {
 		try {
 			 System.out.println("... CONSTRUCTOR ...");
 			String username = "leopold";
@@ -158,7 +160,7 @@ public class PasswordValidation {
 	
 	
 	public static void main(String[] args) {
-		new PasswordValidation();
+		new PasswordValidation(true);
 
 	}
 
