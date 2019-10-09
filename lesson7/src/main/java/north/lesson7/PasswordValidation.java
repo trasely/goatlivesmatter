@@ -11,26 +11,6 @@ public class PasswordValidation {
 	
 	public PasswordValidation() { }
 	
-	private PasswordValidation(boolean islocal) {
-		try {
-			 System.out.println("... CONSTRUCTOR ...");
-			String username = "leopold";
-			String password = "stotch";
-			openConnection();
-			//removeAllEntries();
-			createUserEntry(username, password);
-			deleteSpecificUser(username);
-			userLogin(username, password);
-			
-			
-		}catch(Exception ex) {
-			ex.printStackTrace();
-		}finally {
-			try {conn.close();}catch(Exception ex) {}
-		}
-	}
-	
-	
 
 	/**
 	 * Open a connection to the database and assign the 'conn' object to the open connection
@@ -58,17 +38,17 @@ public class PasswordValidation {
 		 Statement stmt = conn.createStatement();
 		 
 		 stmt.executeUpdate("delete from login");
-		 System.out.println("Record deleted successfully");
+		 System.out.println("Records deleted successfully");
 		 
 		
 	}
 	
 	
-	public boolean validateName(String uname) throws Exception {
+	public boolean validateName(UserLogin ul) throws Exception {
 		System.out.println("... Validate Name ...");
 	
 	Statement stmt = conn.createStatement();
-	ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + uname + "'");
+	ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + ul.getUsername() + "'");
 	boolean exists = false;
 	
 	
@@ -83,18 +63,18 @@ public class PasswordValidation {
 	}
 	
 	
-	public void deleteSpecificUser(String uname) throws Exception{
+	public void deleteSpecificUser(UserLogin ul) throws Exception{
 		System.out.println("... Delete Specific User ...");
 		
 		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + uname + "'");
+		ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + ul.getUsername() + "'");
 		
 		if(rs.next()) {
 		
-		stmt.executeUpdate("delete from login where username = '" + uname + "'");
+		stmt.executeUpdate("delete from login where username = '" + ul.getUsername() + "'");
 		System.out.println("User deleted from login");
 		
-		}else System.out.println("User does not exists");
+		}else System.out.println("User does not exist");
 		
 		
 	}
@@ -105,13 +85,13 @@ public class PasswordValidation {
 	 * @param pword Password, should be converted to MD5 value BEFORE insert
 	 * @throws Exception
 	 */
-	public void createUserEntry(String uname, String pword) throws Exception{
+	public void createUserEntry(UserLogin ul) throws Exception{
 		 System.out.println("... CREATE USER ...");
 		 
-		if(!validateName(uname)) {
+		if(!validateName(ul)) {
 			
 		Statement stmt = conn.createStatement();
-		stmt.executeUpdate("insert into login(username, password) values('" + uname + "', '" + generateMD5(pword) + "')");
+		stmt.executeUpdate("insert into login(username, password) values('" + ul.getUsername() + "', '" + generateMD5(ul) + "')");
 		
 		}
 		
@@ -125,12 +105,13 @@ public class PasswordValidation {
 	 * @param pword Password, should be converted to MD5 value BEFORE select
 	 * @throws Exception
 	 */
-	public void userLogin(String uname, String pword) throws Exception{
+	public void userLogin(UserLogin ul) throws Exception{
+		 System.out.println("... USER LOGIN ...");
 		 System.out.println("... USER LOGIN ...");
 		 
 
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + uname + "' and password ='" + generateMD5(pword) + "'");
+			ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + ul.getUsername() + "' and password ='" + generateMD5(ul) + "'");
 			if(rs.next()) {
 				System.out.println("userid [" + rs.getString("userid") + "]");
 				
@@ -145,11 +126,11 @@ public class PasswordValidation {
 	 * @return
 	 * @throws Exception
 	 */
-	 public String generateMD5(String pword) throws Exception{
+	 public String generateMD5(UserLogin ul) throws Exception{
 		 System.out.println("... GENERATE MD5 ...");
 		 String hashtext = null;
 		 MessageDigest md = MessageDigest.getInstance("MD5");
-			byte[] messageDigest = md.digest(pword.getBytes());
+			byte[] messageDigest = md.digest(ul.getPassword().getBytes());
 			BigInteger number = new BigInteger(1, messageDigest);
 			hashtext = number.toString(16);
 			while (hashtext.length() < 32) {
@@ -157,11 +138,5 @@ public class PasswordValidation {
 			}
 		 return hashtext;
 	 }
-	
-	
-	public static void main(String[] args) {
-		new PasswordValidation(true);
-
-	}
 
 }
