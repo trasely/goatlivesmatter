@@ -4,8 +4,8 @@ public class UserLogin {
 
 	// toString() method
 	public String toString() {
-		return "userid[" + userid + "] Username [" + username + "] Password [" + password + "] Result ["
-				+ result + "] Message [" + message + "]";
+		return "userid[" + userid + "] Username [" + username + "] Password [" + password + "] Result [" + result
+				+ "] Message [" + message + "]";
 	}
 
 	private int userid = -1;
@@ -38,9 +38,10 @@ public class UserLogin {
 		this.password = password;
 	}
 
-	private boolean result = false;
+	private boolean result = true;
 
 	public boolean isResult() {
+
 		return result;
 	}
 
@@ -48,7 +49,7 @@ public class UserLogin {
 		this.result = result;
 	}
 
-	private String message = "";
+	private String message = "User Added";
 
 	public String getMessage() {
 		return message;
@@ -57,5 +58,5 @@ public class UserLogin {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+
 }

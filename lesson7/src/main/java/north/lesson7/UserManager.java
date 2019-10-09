@@ -12,12 +12,15 @@ public class UserManager {
 			PasswordValidation pv = new PasswordValidation();
 			System.out.println(pv);
 			
-			ul.setUsername("Eric");
-			ul.setPassword("Cartman");
+			ul.setUsername("Stan");
+			ul.setPassword("idk");
 			
 		pv.openConnection();
 		//pv.deleteSpecificUser(ul);
 		pv.createUserEntry(ul);
+		
+		
+		
 		pv.userLogin(ul);
 		
 		//pv.removeAllEntries();
