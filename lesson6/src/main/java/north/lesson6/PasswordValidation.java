@@ -1,15 +1,26 @@
 package north.lesson6;
 
 import java.sql.*;
+import java.math.*;
+import java.security.*;
+
 
 public class PasswordValidation {
 
 	private Connection conn = null;
 	
-	public PasswordValidation() {
+	public PasswordValidation() { }
+	
+	private PasswordValidation(boolean islocal) {
 		try {
 			 System.out.println("... CONSTRUCTOR ...");
-			
+			String username = "leopold";
+			String password = "stotch";
+			openConnection();
+			//removeAllEntries();
+			createUserEntry(username, password);
+			deleteSpecificUser(username);
+			userLogin(username, password);
 			
 			
 		}catch(Exception ex) {
@@ -18,13 +29,22 @@ public class PasswordValidation {
 			try {conn.close();}catch(Exception ex) {}
 		}
 	}
+	
+	
 
 	/**
 	 * Open a connection to the database and assign the 'conn' object to the open connection
 	 * @throws Exception
+	 * 
+	 * 
+	 * #done
 	 */
 	public void openConnection() throws Exception{
 		 System.out.println("... OPEN CONNECTION ...");
+		 
+			Class.forName("com.mysql.jdbc.Driver");  
+			conn=DriverManager.getConnection(  
+			"jdbc:mysql://localhost:3306/glm","timmy","thegoat");
 		
 	}
 	
@@ -33,8 +53,49 @@ public class PasswordValidation {
 	 * delete from users (or whatever the user login table is called)
 	 * @throws Exception
 	 */
-	public void remoteAllEntries() throws Exception{
+	public void removeAllEntries() throws Exception{
 		 System.out.println("... REMOVE ALL ENTRIES ...");
+		 Statement stmt = conn.createStatement();
+		 
+		 stmt.executeUpdate("delete from login");
+		 System.out.println("Record deleted successfully");
+		 
+		
+	}
+	
+	
+	public boolean validateName(String uname) throws Exception {
+		System.out.println("... Validate Name ...");
+	
+	Statement stmt = conn.createStatement();
+	ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + uname + "'");
+	boolean exists = false;
+	
+	
+	if(rs.next()) {
+		
+		System.out.println("User already exists");
+		exists = true;
+		}
+	return exists;
+	
+	
+	}
+	
+	
+	public void deleteSpecificUser(String uname) throws Exception{
+		System.out.println("... Delete Specific User ...");
+		
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + uname + "'");
+		
+		if(rs.next()) {
+		
+		stmt.executeUpdate("delete from login where username = '" + uname + "'");
+		System.out.println("User deleted from login");
+		
+		}else System.out.println("User does not exists");
+		
 		
 	}
 	
@@ -46,6 +107,15 @@ public class PasswordValidation {
 	 */
 	public void createUserEntry(String uname, String pword) throws Exception{
 		 System.out.println("... CREATE USER ...");
+		 
+		if(!validateName(uname)) {
+			
+		Statement stmt = conn.createStatement();
+		stmt.executeUpdate("insert into login(username, password) values('" + uname + "', '" + generateMD5(pword) + "')");
+		
+		}
+		
+		
 		
 	}
 	
@@ -57,6 +127,15 @@ public class PasswordValidation {
 	 */
 	public void userLogin(String uname, String pword) throws Exception{
 		 System.out.println("... USER LOGIN ...");
+		 
+
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + uname + "' and password ='" + generateMD5(pword) + "'");
+			if(rs.next()) {
+				System.out.println("userid [" + rs.getString("userid") + "]");
+				
+			}else  System.out.println("NO RECORD FOUND");
+			
 		
 	}
 	
@@ -68,14 +147,20 @@ public class PasswordValidation {
 	 */
 	 public String generateMD5(String pword) throws Exception{
 		 System.out.println("... GENERATE MD5 ...");
-		 String md5 = null;
-		 
-		 return md5;
+		 String hashtext = null;
+		 MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] messageDigest = md.digest(pword.getBytes());
+			BigInteger number = new BigInteger(1, messageDigest);
+			hashtext = number.toString(16);
+			while (hashtext.length() < 32) {
+				hashtext = "0" + hashtext;
+			}
+		 return hashtext;
 	 }
 	
 	
 	public static void main(String[] args) {
-		new PasswordValidation();
+		new PasswordValidation(true);
 
 	}
 
