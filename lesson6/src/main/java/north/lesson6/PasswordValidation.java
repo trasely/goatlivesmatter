@@ -18,7 +18,7 @@ public class PasswordValidation {
 			String password = "stotch";
 			openConnection();
 			//removeAllEntries();
-			//createUserEntry(username, password);
+			createUserEntry(username, password);
 			deleteSpecificUser(username);
 			userLogin(username, password);
 			
