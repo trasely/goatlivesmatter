@@ -87,7 +87,6 @@ public class PasswordValidation {
 	 */
 	public void createUserEntry(UserLogin ul) throws Exception{
 		 System.out.println("... CREATE USER ...");
-		 
 		if(!validateName(ul)) {
 			
 		Statement stmt = conn.createStatement();
@@ -103,9 +102,10 @@ public class PasswordValidation {
 	 * Fetch the user using the converted password as an MD5
 	 * @param uname Username
 	 * @param pword Password, should be converted to MD5 value BEFORE select
+	 * @return 
 	 * @throws Exception
 	 */
-	public void userLogin(UserLogin ul) throws Exception{
+	public UserLogin userLogin(UserLogin ul) throws Exception{
 		 System.out.println("... USER LOGIN ...");
 		 System.out.println("... USER LOGIN ...");
 		 
@@ -116,6 +116,8 @@ public class PasswordValidation {
 				System.out.println("userid [" + rs.getString("userid") + "]");
 				
 			}else  System.out.println("NO RECORD FOUND");
+			
+			return ul;
 			
 		
 	}

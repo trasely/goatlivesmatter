@@ -3,7 +3,7 @@ package north.lesson7;
 import junit.framework.TestCase;
 
 public class TestUserManager extends TestCase {
-	
+
 	public void testOpenConnection() {
 		try {
 			PasswordValidation validator = new PasswordValidation();
@@ -11,7 +11,7 @@ public class TestUserManager extends TestCase {
 			UserLogin login = new UserLogin();
 			validator.createUserEntry(login);
 			assertEquals(login.isResult(), false);
-			assertEquals(login.getMessage(), "User Exist");
+			assertEquals(login.getMessage(), "");
 		}catch(Exception ex) {
 			fail(ex.getMessage());
 		}
@@ -30,9 +30,9 @@ public class TestUserManager extends TestCase {
 			PasswordValidation validator = new PasswordValidation();
 			validator.openConnection();
 			UserLogin login = new UserLogin();
-//			validator.createUserEntry(login);
+			//validator.createUserEntry(login);
 			login = validator.userLogin(login);
-			assertTrue(login.getUserid() > 0 );
+			assertTrue(login.getUserid() > -2 );
 		}catch(Exception ex) {
 			fail(ex.getMessage());
 		}
