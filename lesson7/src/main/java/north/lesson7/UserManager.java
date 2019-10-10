@@ -12,7 +12,7 @@ public class UserManager {
 			PasswordValidation pv = new PasswordValidation();
 			System.out.println(pv);
 			
-			ul.setUsername("that");
+			ul.setUsername("  that B   ");
 			ul.setPassword("idk");
 			
 		pv.openConnection();

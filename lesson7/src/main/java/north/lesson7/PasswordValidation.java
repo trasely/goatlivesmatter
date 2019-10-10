@@ -48,24 +48,50 @@ public class PasswordValidation {
 		
 		//check for 0 length String -- and check for no white spaces
 		// google string compare & google trim for strings
-		// get string length and make sure it is > 8 (ie: our user rules would be your username needs to be more than, or equal to, 8 characters
+		// get string length and make sure it is > 8 (ie: our user rules would be your username needs to be more than, or equal to, 8 characters)
+		//do the string length check for password as well
+		
 		
 		System.out.println("... Validate Name ...");
 	
 	Statement stmt = conn.createStatement();
 	ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + ul.getUsername() + "'");
 	boolean exists = false;
+	//String str = "";
 	
 	
 	if(rs.next()) {
 		
 		System.out.println("User already exists");
 		exists = true;
+		ul.setUsername(rs.getString("username"));
+		System.out.println(ul.getUsername().trim());
+		
+		
+		
 		}
 	return exists;
 	
 	
 	}
+	
+	/*
+	 * Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + ul.getUsername() + "' and password ='" + generateMD5(ul) + "'");
+			if(rs.next()) {
+				System.out.println("userid [" + rs.getString("userid") + "]");
+				ul.setUserid(rs.getInt("userid"));
+				ul.setResult(true);
+				ul.setMessage("User Added");
+			}else {
+				System.out.println("NO RECORD FOUND");
+				ul.setResult(false);
+				ul.setMessage("User Not Found");
+			}
+	 * 
+	 * 
+	 * 
+	 */
 	
 	
 	public void deleteSpecificUser(UserLogin ul) throws Exception{
