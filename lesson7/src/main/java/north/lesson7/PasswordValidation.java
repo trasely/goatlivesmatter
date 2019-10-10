@@ -45,6 +45,11 @@ public class PasswordValidation {
 	
 	
 	public boolean validateName(UserLogin ul) throws Exception {
+		
+		//check for 0 length String -- and check for no white spaces
+		// google string compare & google trim for strings
+		// get string length and make sure it is > 8 (ie: our user rules would be your username needs to be more than, or equal to, 8 characters
+		
 		System.out.println("... Validate Name ...");
 	
 	Statement stmt = conn.createStatement();
@@ -114,8 +119,14 @@ public class PasswordValidation {
 			ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + ul.getUsername() + "' and password ='" + generateMD5(ul) + "'");
 			if(rs.next()) {
 				System.out.println("userid [" + rs.getString("userid") + "]");
-				
-			}else  System.out.println("NO RECORD FOUND");
+				ul.setUserid(rs.getInt("userid"));
+				ul.setResult(true);
+				ul.setMessage("User Added");
+			}else {
+				System.out.println("NO RECORD FOUND");
+				ul.setResult(false);
+				ul.setMessage("User Not Found");
+			}
 			
 			return ul;
 			

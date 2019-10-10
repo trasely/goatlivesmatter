@@ -11,7 +11,7 @@ public class TestUserManager extends TestCase {
 			UserLogin login = new UserLogin();
 			validator.createUserEntry(login);
 			assertEquals(login.isResult(), false);
-			assertEquals(login.getMessage(), "");
+//			assertEquals(login.getMessage(), "");
 		}catch(Exception ex) {
 			fail(ex.getMessage());
 		}
@@ -25,6 +25,32 @@ public class TestUserManager extends TestCase {
 //		fail("Not yet implemented");
 //	}
 
+	public void testWhiteSpace() {
+		try {
+			PasswordValidation validator = new PasswordValidation();
+			validator.openConnection();
+			UserLogin login = new UserLogin();
+			login.setUsername("        ");
+			//validator.createUserEntry(login);
+			login = validator.userLogin(login);
+			assertTrue(login.getUserid() > 0 );
+			
+			/*
+			in our jsp ... we would have
+			UserLogin = userManger.addUser();
+			<somestring> = ul.getMessage();
+			
+			
+			
+			
+			*/
+		}catch(Exception ex) {
+			fail(ex.getMessage());
+		}
+	}
+
+	
+	
 	public void testUserLogin() {
 		try {
 			PasswordValidation validator = new PasswordValidation();
@@ -32,7 +58,17 @@ public class TestUserManager extends TestCase {
 			UserLogin login = new UserLogin();
 			//validator.createUserEntry(login);
 			login = validator.userLogin(login);
-			assertTrue(login.getUserid() > -2 );
+			assertTrue(login.getUserid() > 0 );
+			
+			/*
+			in our jsp ... we would have
+			UserLogin = userManger.addUser();
+			<somestring> = ul.getMessage();
+			
+			
+			
+			
+			*/
 		}catch(Exception ex) {
 			fail(ex.getMessage());
 		}
