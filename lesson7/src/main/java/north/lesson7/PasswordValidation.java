@@ -53,6 +53,14 @@ public class PasswordValidation {
 		
 		
 		System.out.println("... Validate Name ...");
+		
+		if(ul.getUsername().trim().length() < 8) {
+			System.out.println("Invalud User Length");
+			return false;
+		}
+		
+		
+		
 	
 	Statement stmt = conn.createStatement();
 	ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + ul.getUsername() + "'");
