@@ -18,6 +18,11 @@ public class UserLogin {
 		this.userid = userid;
 	}
 
+	
+	
+	
+	
+	
 	private String username = "";
 
 	public String getUsername() {
@@ -28,6 +33,10 @@ public class UserLogin {
 		this.username = username;
 	}
 
+	
+	
+	
+	
 	private String password = "";
 
 	public String getPassword() {
@@ -38,7 +47,11 @@ public class UserLogin {
 		this.password = password;
 	}
 
-	private boolean result = true;
+	
+	
+	
+	
+	private boolean result = false;
 
 	public boolean isResult() {
 
@@ -49,7 +62,12 @@ public class UserLogin {
 		this.result = result;
 	}
 
-	private String message = "User Added";
+	
+	
+	
+	
+	
+	private String message = "";
 
 	public String getMessage() {
 		return message;
