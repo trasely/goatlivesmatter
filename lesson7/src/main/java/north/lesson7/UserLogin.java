@@ -32,10 +32,6 @@ public class UserLogin {
 	public void setUsername(String username) {
 		this.username = username.trim();
 	}
-
-	
-	
-	
 	
 	private String password = "";
 

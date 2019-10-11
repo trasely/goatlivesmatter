@@ -68,12 +68,9 @@ public class PasswordValidation {
 
 	public boolean validateName(UserLogin ul) throws Exception {
 
-		// check for 0 length String -- and check for no white spaces
-		// google string compare & google trim for strings
-		// get string length and make sure it is > 8 (ie: our user rules would be your
-		// username needs to be more than, or equal to, 8 characters)
-		// do the string length check for password as well
-
+		//TODO 
+		// if the user is found, set the state and message ...  
+		
 		System.out.println("... Validate Name ...");
 
 		Statement stmt = conn.createStatement();
