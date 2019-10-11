@@ -12,20 +12,21 @@ public class UserManager {
 			PasswordValidation pv = new PasswordValidation();
 			System.out.println(pv);
 			
-			ul.setUsername("tht Booiui");
-			ul.setPassword("asdf");
+			ul.setUsername("tht Basiui");
+			ul.setPassword("asdfasdfsa");
 			
 		pv.openConnection();
 		//pv.deleteSpecificUser(ul);
 		pv.createUserEntry(ul);
 		pv.validate(ul);
+		pv.userStats(ul);
 		
 		
 		
 		pv.userLogin(ul);
 		
 		
-		pv.removeAllEntries();
+		//pv.removeAllEntries();
 			
 			
 		} catch (Exception ex) {

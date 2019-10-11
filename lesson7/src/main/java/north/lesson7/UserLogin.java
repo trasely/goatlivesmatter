@@ -3,10 +3,10 @@ package north.lesson7;
 public class UserLogin {
 
 	// toString() method
-	public String toString() {
-		return "userid[" + userid + "] Username [" + username + "] Password [" + password + "] Result [" + result
-				+ "] Message [" + message + "]";
-	}
+//	public String toString() {
+//		return "userid[" + userid + "] Username [" + username + "] Password [" + password + "] Result [" + result
+//				+ "] Message [" + message + "]";
+//	}
 
 	private int userid = -1;
 

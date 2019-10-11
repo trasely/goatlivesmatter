@@ -8,6 +8,10 @@ public class PasswordValidation {
 
 	private Connection conn = null;
 
+	
+	
+	
+	
 	public PasswordValidation() {
 	}
 
@@ -50,7 +54,6 @@ public class PasswordValidation {
 			return ul;
 
 		}
-
 		if (ul.getPassword().trim().length() < 8) {
 			System.out.println("Invalid Password Length");
 			ul.setResult(false);
@@ -173,6 +176,25 @@ public class PasswordValidation {
 	 * @return
 	 * @throws Exception
 	 */
+//	public String toString() {
+//		return "userid[" + userid + "] Username [" + username + "] Password [" + password + "] Result [" + result
+//				+ "] Message [" + message + "]";
+//	}
+	
+	
+	public void userStats(UserLogin ul) throws Exception {
+		
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + ul.getUsername()
+				+ "' and password ='" + generateMD5(ul) + "'");
+		if (rs.next()) {
+		System.out.println("userid[" + rs.getString("userid") + "] Username [" + rs.getString("username") + "] Password [" + rs.getString("password") + "] Result [" + rs.getBoolean("result") + "] Message [" + rs.getString("message") + "]");
+			
+		} 
+		return;
+		
+	}
+	
 	public String generateMD5(UserLogin ul) throws Exception {
 		System.out.println("... GENERATE MD5 ...");
 		String hashtext = null;
