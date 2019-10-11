@@ -9,10 +9,12 @@ public class TestUserManager extends TestCase {
 			PasswordValidation validator = new PasswordValidation();
 			validator.openConnection();
 			UserLogin login = new UserLogin();
+			login.setUsername(null);
 			validator.createUserEntry(login);
 			assertEquals(login.isResult(), false);
 //			assertEquals(login.getMessage(), "");
 		}catch(Exception ex) {
+			ex.printStackTrace();
 			fail(ex.getMessage());
 		}
 	}
