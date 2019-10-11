@@ -30,7 +30,7 @@ public class UserLogin {
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		this.username = username.trim();
 	}
 
 	
@@ -44,7 +44,7 @@ public class UserLogin {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = password.trim();
 	}
 
 	
