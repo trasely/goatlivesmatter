@@ -47,6 +47,8 @@ public class PasswordValidation {
 	}
 
 	public UserLogin validate(UserLogin ul) throws Exception {
+		
+		
 		if (ul.getUsername().trim().length() < 8) {
 			System.out.println("Invalid User Length");
 			ul.setResult(false);
@@ -75,7 +77,7 @@ public class PasswordValidation {
 		System.out.println("... Validate Name ...");
 
 		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + ul.getUsername() + "'");
+		ResultSet rs = stmt.executeQuery("SELECT userid,username FROM login WHERE username = '" + ul.getUsername() + "'");
 		boolean exists = false;
 		// String str = "";
 
@@ -83,7 +85,7 @@ public class PasswordValidation {
 
 			System.out.println("User already exists");
 			exists = true;
-			ul.setUsername(rs.getString("username"));
+			ul.setUsername(rs.getString("userid"));
 			System.out.println(ul.getUsername().trim());
 
 		}
@@ -112,7 +114,7 @@ public class PasswordValidation {
 
 		if (rs.next()) {
 
-			stmt.executeUpdate("delete from login where username = '" + ul.getUsername() + "'");
+			stmt.executeUpdate("delete from login where username = '" + ul.getUserid() + "'");
 			System.out.println("User deleted from login");
 
 		} else
@@ -185,10 +187,11 @@ public class PasswordValidation {
 	public void userStats(UserLogin ul) throws Exception {
 		
 		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT userid FROM login WHERE username = '" + ul.getUsername()
+		ResultSet rs = stmt.executeQuery("SELECT userid,username,password FROM login WHERE username = '" + ul.getUsername()
 				+ "' and password ='" + generateMD5(ul) + "'");
 		if (rs.next()) {
-		System.out.println("userid[" + rs.getString("userid") + "] Username [" + rs.getString("username") + "] Password [" + rs.getString("password") + "] Result [" + rs.getBoolean("result") + "] Message [" + rs.getString("message") + "]");
+		System.out.println("userid[" + rs.getString("userid") + "] Username [" + rs.getString("username") 
+		+ "] Password [" + rs.getString("password") + "]");
 			
 		} 
 		return;
