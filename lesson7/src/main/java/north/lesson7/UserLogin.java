@@ -3,10 +3,10 @@ package north.lesson7;
 public class UserLogin {
 
 	// toString() method
-	public String toString() {
-		return "userid[" + userid + "] Username [" + username + "] Password [" + password + "] Result ["
-				+ result + "] Message [" + message + "]";
-	}
+//	public String toString() {
+//		return "userid[" + userid + "] Username [" + username + "] Password [" + password + "] Result [" + result
+//				+ "] Message [" + message + "]";
+//	}
 
 	private int userid = -1;
 
@@ -18,6 +18,11 @@ public class UserLogin {
 		this.userid = userid;
 	}
 
+	
+	
+	
+	
+	
 	private String username = "";
 
 	public String getUsername() {
@@ -25,9 +30,9 @@ public class UserLogin {
 	}
 
 	public void setUsername(String username) {
-		this.username = username;
+		this.username = username.trim();
 	}
-
+	
 	private String password = "";
 
 	public String getPassword() {
@@ -35,12 +40,17 @@ public class UserLogin {
 	}
 
 	public void setPassword(String password) {
-		this.password = password;
+		this.password = password.trim();
 	}
 
+	
+	
+	
+	
 	private boolean result = false;
 
 	public boolean isResult() {
+
 		return result;
 	}
 
@@ -48,6 +58,11 @@ public class UserLogin {
 		this.result = result;
 	}
 
+	
+	
+	
+	
+	
 	private String message = "";
 
 	public String getMessage() {
@@ -57,5 +72,5 @@ public class UserLogin {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
+
 }
